@@ -71,9 +71,11 @@ def index():
                 mydict = {"Product": searchString, "Name": name, "Rating": rating, "CommentHead": commentHead,
                           "Comment": custComment}
                 reviews.append(mydict)
-            client = pymongo.MongoClient("mongodb+srv://pwskills:pwskills@cluster0.ln0bt5m.mongodb.net/?retryWrites=true&w=majority")
-            db = client['review_scrap']
-            review_col = db['review_scrap_data']
+        
+            client = pymongo.MongoClient("mongodb+srv://emteeyazhussaini:emteeyazhussain@cluster0.yvjmu0e.mongodb.net/?retryWrites=true&w=majority")
+
+            db = client['review_scrapinging']
+            review_col = db['review_scrap_datass']
             review_col.insert_many(reviews)
             return render_template('results.html', reviews=reviews[0:(len(reviews)-1)])
         except Exception as e:
@@ -85,5 +87,5 @@ def index():
         return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(host='127.0.0.1', port=8000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 	#app.run(debug=True)
